@@ -1,54 +1,342 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Florida Security Deposit Recovery</title>
+<title>My Smart Cousin — Document Upload</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f5f5;padding:20px;line-height:1.6}
-.container{max-width:500px;margin:0 auto;background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-.header{background:#1e3a5f;color:white;padding:30px 20px;text-align:center}
-.header h1{font-size:22px;margin-bottom:8px}
-.header p{font-size:14px;opacity:0.9}
-.form{padding:25px 20px}
-.field{margin-bottom:20px}
-label{display:block;font-weight:600;margin-bottom:6px;font-size:15px;color:#333}
-.required label::after{content:" *";color:#e74c3c}
-input,textarea,select{width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:10px;font-size:16px}
-input:focus,textarea:focus{outline:none;border-color:#1e3a5f}
-textarea{min-height:80px}
-.radio-group{display:flex;gap:15px;flex-wrap:wrap}
-.radio-group label{font-weight:normal;display:flex;align-items:center;gap:6px}
-.radio-group input{width:20px;height:20px}
-.submit-btn{width:100%;padding:16px;background:#1e3a5f;color:white;border:none;border-radius:10px;font-size:17px;font-weight:600}
-.note{background:#fff3cd;border:1px solid #ffeaa7;border-radius:8px;padding:12px;margin-bottom:20px;font-size:14px;color:#856404}
+  :root {
+    --teal:       #4EC4C4;
+    --teal-dark:  #3AADAD;
+    --teal-deep:  #2A9090;
+    --teal-light: #E8F8F8;
+    --teal-pale:  #F2FBFB;
+    --navy:       #1E2D40;
+    --navy2:      #263547;
+    --white:      #FFFFFF;
+    --off-white:  #F7FAFA;
+    --border:     #C8E8E8;
+    --text:       #1E2D40;
+    --muted:      #6B8080;
+    --green:      #2A8C5A;
+    --red:        #C0392B;
+    --radius:     12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--off-white); color: var(--text); min-height: 100vh; }
+
+/* HEADER */
+.header { background: var(–teal); position: relative; overflow: hidden; }
+.header::after { content:’’; position:absolute; bottom:-1px; left:0; right:0; height:28px; background:var(–off-white); border-radius:28px 28px 0 0; }
+.header::before { content:’’; position:absolute; inset:0; background: radial-gradient(ellipse at 80% -20%, rgba(255,255,255,0.18) 0%, transparent 55%), radial-gradient(ellipse at 10% 110%, rgba(0,0,0,0.06) 0%, transparent 50%); pointer-events:none; }
+.header-inner { position:relative; z-index:1; padding:20px 20px 44px; text-align:center; }
+.nav-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+.logo-wrap { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.22); border:1.5px solid rgba(255,255,255,0.40); border-radius:10px; padding:8px 14px; }
+.owl-icon { font-size:22px; line-height:1; }
+.logo-text { font-family:‘Nunito’,sans-serif; font-weight:700; font-size:13px; letter-spacing:0.10em; text-transform:uppercase; color:var(–white); }
+.header-badge { background:var(–navy); color:var(–white); font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 14px; border-radius:20px; }
+.header h1 { font-family:‘Lora’,serif; color:var(–white); font-size:clamp(24px,7vw,36px); line-height:1.2; margin-bottom:10px; }
+.header h1 em { font-style:italic; font-weight:400; }
+.header-sub { color:rgba(255,255,255,0.85); font-size:14px; font-weight:500; }
+
+/* BODY */
+.body { max-width:560px; margin:0 auto; padding:0 16px 60px; }
+
+/* STATS */
+.stat-strip { display:flex; gap:10px; margin-bottom:24px; }
+.stat-card { flex:1; background:var(–white); border:1.5px solid var(–border); border-radius:var(–radius); padding:14px 10px; text-align:center; }
+.stat-val { font-family:‘Lora’,serif; font-size:20px; font-weight:700; color:var(–teal-deep); line-height:1; margin-bottom:4px; }
+.stat-lbl { font-size:11px; color:var(–muted); font-weight:600; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* INFO */
+.info-box { background:var(–teal-light); border:1.5px solid var(–border); border-left:4px solid var(–teal-dark); border-radius:var(–radius); padding:14px 16px; margin-bottom:24px; font-size:13.5px; color:var(–navy2); line-height:1.6; }
+.info-box strong { color:var(–teal-deep); }
+
+/* FORM CARD */
+.form-card { background:var(–white); border:1.5px solid var(–border); border-radius:16px; padding:28px 22px; margin-bottom:16px; box-shadow:0 2px 16px rgba(78,196,196,0.08); }
+.card-title { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.card-num { width:28px; height:28px; background:var(–teal); color:var(–white); border-radius:50%; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.card-title h2 { font-family:‘Lora’,serif; font-size:17px; color:var(–navy); font-weight:600; }
+.card-desc { font-size:13px; color:var(–muted); margin-bottom:18px; padding-left:38px; line-height:1.5; }
+
+/* FIELDS */
+.field { margin-bottom:16px; }
+.field:last-child { margin-bottom:0; }
+.field label { display:block; font-size:13.5px; font-weight:700; color:var(–navy); margin-bottom:7px; }
+.req { color:var(–teal-deep); margin-left:2px; }
+.opt { color:var(–muted); font-weight:500; font-size:12px; margin-left:4px; }
+input[type=“text”], input[type=“email”], input[type=“tel”] { width:100%; padding:13px 15px; border:2px solid #D8EDED; border-radius:10px; font-family:‘Nunito’,sans-serif; font-size:15px; color:var(–text); background:var(–teal-pale); outline:none; transition:border-color 0.2s,box-shadow 0.2s,background 0.2s; -webkit-appearance:none; }
+input:focus { border-color:var(–teal-dark); background:var(–white); box-shadow:0 0 0 3px rgba(78,196,196,0.15); }
+input.err { border-color:var(–red); }
+.field-err { font-size:12px; color:var(–red); margin-top:5px; display:none; }
+.field-err.show { display:block; }
+
+/* UPLOAD */
+.upload-zone { border:2px dashed #BDE0E0; border-radius:var(–radius); padding:22px 16px; text-align:center; cursor:pointer; transition:all 0.2s; background:var(–teal-pale); position:relative; margin-bottom:10px; }
+.upload-zone:hover, .upload-zone.over { border-color:var(–teal-dark); background:var(–teal-light); }
+.upload-zone.has-files { border-color:var(–green); background:rgba(42,140,90,0.04); border-style:solid; }
+.upload-zone input[type=“file”] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+.upload-zone input[type=“file”]:focus { outline:none; }
+.uz-icon { font-size:30px; margin-bottom:8px; line-height:1; }
+.uz-title { font-size:14px; font-weight:700; color:var(–navy); margin-bottom:3px; }
+.uz-sub { font-size:12px; color:var(–muted); }
+.uz-tap { display:inline-block; margin-top:8px; background:var(–teal); color:var(–white); font-size:12px; font-weight:700; padding:6px 16px; border-radius:20px; letter-spacing:0.03em; }
+
+/* FILE LIST */
+.file-list { display:flex; flex-direction:column; gap:7px; }
+.file-item { display:flex; align-items:center; gap:10px; background:var(–teal-light); border:1.5px solid var(–border); border-radius:8px; padding:9px 12px; font-size:13px; color:var(–navy2); animation:pop-in 0.2s ease; }
+@keyframes pop-in { from{opacity:0;transform:scale(0.97)} to{opacity:1;transform:scale(1)} }
+.fi-icon { font-size:16px; flex-shrink:0; }
+.fi-name { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:500; }
+.fi-size { color:var(–muted); font-size:11px; flex-shrink:0; }
+.fi-remove { cursor:pointer; color:var(–muted); font-size:15px; flex-shrink:0; transition:color 0.15s; }
+.fi-remove:hover { color:var(–red); }
+.upload-req-note { font-size:12px; color:var(–red); margin-top:4px; display:none; }
+.upload-req-note.show { display:block; }
+
+/* SUBMIT */
+.submit-card { background:var(–white); border:1.5px solid var(–border); border-radius:16px; padding:24px 22px; box-shadow:0 2px 16px rgba(78,196,196,0.08); }
+.submit-btn { width:100%; padding:17px; background:var(–navy); color:var(–white); border:none; border-radius:var(–radius); font-family:‘Nunito’,sans-serif; font-size:16px; font-weight:700; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:10px; letter-spacing:0.02em; }
+.submit-btn:hover { background:var(–navy2); box-shadow:0 6px 20px rgba(30,45,64,0.22); transform:translateY(-1px); }
+.submit-btn:disabled { opacity:0.55; cursor:not-allowed; transform:none; }
+.trust-row { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+.trust-pill { display:flex; align-items:center; gap:5px; font-size:11.5px; color:var(–muted); font-weight:600; }
+
+/* SUCCESS */
+.success { display:none; text-align:center; padding:10px 0 40px; }
+.success.show { display:block; }
+.success-owl { font-size:52px; margin-bottom:16px; animation:bounce-in 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes bounce-in { from{transform:scale(0)} to{transform:scale(1)} }
+.success h2 { font-family:‘Lora’,serif; font-size:26px; color:var(–navy); margin-bottom:10px; }
+.success-sub { color:var(–muted); font-size:14px; line-height:1.7; margin-bottom:24px; }
+.next-steps { background:var(–white); border:1.5px solid var(–border); border-radius:14px; padding:20px; text-align:left; margin-bottom:20px; }
+.next-steps h3 { font-family:‘Lora’,serif; font-size:15px; color:var(–navy); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.ns-item { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(–teal-light); font-size:13.5px; color:var(–navy2); line-height:1.5; }
+.ns-item:last-child { border-bottom:none; padding-bottom:0; }
+.ns-num { width:24px; height:24px; background:var(–teal); color:var(–white); border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.back-link { display:inline-block; color:var(–teal-deep); font-size:13px; font-weight:700; text-decoration:none; padding:10px 0; }
+.back-link:hover { text-decoration:underline; }
+
+footer { text-align:center; padding:20px 16px; font-size:12px; color:var(–muted); line-height:1.7; }
+footer a { color:var(–teal-deep); text-decoration:none; }
+.form-section.hidden { display:none; }
 </style>
+
 </head>
 <body>
-<div class="container">
-<div class="header">
-<h1>Florida Security Deposit Recovery</h1>
-<p>Complete this form after payment. Letter delivered within 24 hours.</p>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="nav-row">
+      <div class="logo-wrap">
+        <div class="owl-icon">🦉</div>
+        <div class="logo-text">My Smart Cousin</div>
+      </div>
+      <div class="header-badge">Florida §83.49</div>
+    </div>
+    <h1>Upload Your<br><em>Case Documents</em></h1>
+    <p class="header-sub">Security Deposit Recovery · Letter in 24 hrs</p>
+  </div>
+</header>
+
+<div class="body">
+
+  <div class="stat-strip">
+    <div class="stat-card"><div class="stat-val">24hr</div><div class="stat-lbl">Letter Ready</div></div>
+    <div class="stat-card"><div class="stat-val">2×</div><div class="stat-lbl">Damages Possible</div></div>
+    <div class="stat-card"><div class="stat-val">30</div><div class="stat-lbl">Day Deadline</div></div>
+  </div>
+
+  <div class="info-box">📋 Upload your documents below. The more you provide, the <strong>stronger your demand letter</strong>. We'll cite Florida Statute §83.49 and email it to you within 24 hours.</div>
+
+  <!-- SUCCESS -->
+
+  <div class="success" id="successBox">
+    <div class="success-owl">🦉</div>
+    <h2>Your Cousin's On It!</h2>
+    <p class="success-sub">Documents received. Check your inbox within 24 hours for your demand letter — ready to send to your landlord.</p>
+    <div class="next-steps">
+      <h3>⚖️ What Happens Next</h3>
+      <div class="ns-item"><div class="ns-num">1</div><div>We draft your demand letter citing F.S. §83.49 and email it to you.</div></div>
+      <div class="ns-item"><div class="ns-num">2</div><div>You send it to your landlord by email or certified mail.</div></div>
+      <div class="ns-item"><div class="ns-num">3</div><div>Landlord has 30 days to respond under Florida law.</div></div>
+      <div class="ns-item"><div class="ns-num">4</div><div>No response? File in small claims court — you may be owed <strong>double your deposit</strong>.</div></div>
+    </div>
+    <a class="back-link" href="https://mysmartcousin.com">← Back to mysmartcousin.com</a>
+  </div>
+
+  <!-- FORM -->
+
+  <form id="caseForm" class="form-section" name="deposit-docs" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="deposit-docs">
+    <p style="display:none"><input name="bot-field"></p>
+
+```
+<div class="form-card">
+  <div class="card-title"><div class="card-num">1</div><h2>Your Info</h2></div>
+  <p class="card-desc">We'll send your demand letter to your email address.</p>
+  <div class="field">
+    <label for="fullName">Full Name <span class="req">*</span></label>
+    <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" autocomplete="name" required>
+    <div class="field-err" id="e-fullName">Please enter your full name.</div>
+  </div>
+  <div class="field">
+    <label for="email">Email Address <span class="req">*</span></label>
+    <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required>
+    <div class="field-err" id="e-email">Please enter a valid email address.</div>
+  </div>
+  <div class="field">
+    <label for="phone">Phone <span class="opt">(optional)</span></label>
+    <input type="tel" id="phone" name="phone" placeholder="(305) 555-0100" autocomplete="tel">
+  </div>
 </div>
-<form class="form" name="deposit-form" method="POST" data-netlify="true">
-<input type="hidden" name="form-name" value="deposit-form">
-<div class="note">
-<strong>After submitting:</strong> Email your lease agreement and any photos to: <strong>MySmartCousin@gmail.com</strong> with subject line "Deposit Case - [Your Name]"
+
+<div class="form-card">
+  <div class="card-title"><div class="card-num">2</div><h2>Lease Agreement <span style="color:var(--teal-deep);font-size:13px;">*</span></h2></div>
+  <p class="card-desc">Upload your signed lease. A photo of each page or a PDF both work.</p>
+  <div class="upload-zone" id="zone-lease">
+    <input type="file" id="lease" name="lease" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.heic" multiple>
+    <div class="uz-icon">📋</div>
+    <div class="uz-title">Lease Agreement</div>
+    <div class="uz-sub">PDF, Word, or photos of each page</div>
+    <div class="uz-tap">Tap to Upload</div>
+  </div>
+  <div class="file-list" id="list-lease"></div>
+  <div class="upload-req-note" id="req-lease">Please upload your lease agreement to continue.</div>
 </div>
-<div class="field required"><label>Full name</label><input type="text" name="fullName" required></div>
-<div class="field required"><label>Email</label><input type="email" name="email" required></div>
-<div class="field"><label>Phone (optional)</label><input type="tel" name="phone"></div>
-<div class="field required"><label>Landlord/property company</label><input type="text" name="landlord" required></div>
-<div class="field required"><label>Property address</label><textarea name="address" required></textarea></div>
-<div class="field required"><label>Move-out date</label><input type="date" name="moveOut" required></div>
-<div class="field required"><label>Deposit amount paid</label><input type="number" name="depositPaid" required></div>
-<div class="field"><label>Amount returned (if any)</label><input type="number" name="depositReturned"></div>
-<div class="field"><label>What deductions did they claim?</label><textarea name="deductions"></textarea></div>
-<div class="field required"><label>Did they send itemized list within 30 days?</label><div class="radio-group"><label><input type="radio" name="itemized" value="Yes" required> Yes</label><label><input type="radio" name="itemized" value="No"> No</label><label><input type="radio" name="itemized" value="DontKnow"> Don't know</label></div></div>
-<div class="field"><label>Additional details about your situation</label><textarea name="notes"></textarea></div>
-<button type="submit" class="submit-btn">Submit My Case</button>
-</form>
+
+<div class="form-card">
+  <div class="card-title"><div class="card-num">3</div><h2>Move-Out Photos <span style="color:var(--muted);font-size:12px;font-weight:500;">recommended</span></h2></div>
+  <p class="card-desc">Photos of the unit when you left — walls, floors, appliances, any damage or cleanliness. Select multiple at once.</p>
+  <div class="upload-zone" id="zone-photos">
+    <input type="file" id="photos" name="photos" accept="image/*,.heic" multiple>
+    <div class="uz-icon">📸</div>
+    <div class="uz-title">Move-Out Photos</div>
+    <div class="uz-sub">JPG, PNG, HEIC · select multiple at once</div>
+    <div class="uz-tap">Tap to Upload</div>
+  </div>
+  <div class="file-list" id="list-photos"></div>
 </div>
+
+<div class="form-card">
+  <div class="card-title"><div class="card-num">4</div><h2>Landlord Correspondence <span style="color:var(--muted);font-size:12px;font-weight:500;">recommended</span></h2></div>
+  <p class="card-desc">Emails, texts, letters, or any notice from your landlord about your deposit — including any itemized deduction list they sent you.</p>
+  <div class="upload-zone" id="zone-corr">
+    <input type="file" id="correspondence" name="correspondence" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx" multiple>
+    <div class="uz-icon">✉️</div>
+    <div class="uz-title">Landlord Messages & Letters</div>
+    <div class="uz-sub">Screenshots, PDFs, photos of letters</div>
+    <div class="uz-tap">Tap to Upload</div>
+  </div>
+  <div class="file-list" id="list-corr"></div>
+</div>
+
+<div class="submit-card">
+  <button type="submit" class="submit-btn" id="submitBtn">
+    <span>Submit My Documents</span>
+    <span>→</span>
+  </button>
+  <div class="trust-row">
+    <div class="trust-pill">🔒 <span>Secure upload</span></div>
+    <div class="trust-pill">⚡ <span>Letter in 24 hrs</span></div>
+    <div class="trust-pill">🦉 <span>mysmartcousin.com</span></div>
+  </div>
+</div>
+```
+
+  </form>
+</div>
+
+<footer>
+  © 2025 My Smart Cousin &nbsp;·&nbsp; <a href="https://mysmartcousin.com">mysmartcousin.com</a><br>
+  This service prepares demand letters based on Florida Statute §83.49. Not a law firm.
+</footer>
+
+<script>
+  const uploads = {
+    lease:          { input: document.getElementById('lease'),          zone: document.getElementById('zone-lease'),  list: document.getElementById('list-lease'),  files: [] },
+    photos:         { input: document.getElementById('photos'),         zone: document.getElementById('zone-photos'), list: document.getElementById('list-photos'), files: [] },
+    correspondence: { input: document.getElementById('correspondence'), zone: document.getElementById('zone-corr'),   list: document.getElementById('list-corr'),   files: [] },
+  };
+
+  function fmt(b) { if(b<1024)return b+'B'; if(b<1048576)return(b/1024).toFixed(0)+'KB'; return(b/1048576).toFixed(1)+'MB'; }
+  function icon(n) { const e=n.split('.').pop().toLowerCase(); if(['jpg','jpeg','png','heic','gif','webp'].includes(e))return'🖼️'; if(e==='pdf')return'📄'; if(['doc','docx'].includes(e))return'📝'; return'📎'; }
+
+  function render(key) {
+    const {list,files,zone}=uploads[key];
+    list.innerHTML='';
+    zone.classList.toggle('has-files',files.length>0);
+    files.forEach((f,i)=>{
+      const el=document.createElement('div');
+      el.className='file-item';
+      el.innerHTML=`<span class="fi-icon">${icon(f.name)}</span><span class="fi-name">${f.name}</span><span class="fi-size">${fmt(f.size)}</span><span class="fi-remove" data-key="${key}" data-idx="${i}">✕</span>`;
+      list.appendChild(el);
+    });
+  }
+
+  function sync(key) { const dt=new DataTransfer(); uploads[key].files.forEach(f=>dt.items.add(f)); uploads[key].input.files=dt.files; }
+
+  document.addEventListener('click',e=>{
+    if(e.target.classList.contains('fi-remove')){
+      const {key,idx}=e.target.dataset;
+      uploads[key].files.splice(parseInt(idx),1);
+      sync(key); render(key);
+    }
+  });
+
+  Object.entries(uploads).forEach(([key,u])=>{
+    u.input.addEventListener('change',()=>{
+      Array.from(u.input.files).forEach(f=>{ if(!u.files.find(x=>x.name===f.name&&x.size===f.size))u.files.push(f); });
+      sync(key); render(key);
+      if(key==='lease')document.getElementById('req-lease').classList.remove('show');
+    });
+    u.zone.addEventListener('dragover',e=>{e.preventDefault();u.zone.classList.add('over');});
+    u.zone.addEventListener('dragleave',()=>u.zone.classList.remove('over'));
+    u.zone.addEventListener('drop',e=>{
+      e.preventDefault();u.zone.classList.remove('over');
+      Array.from(e.dataTransfer.files).forEach(f=>{ if(!u.files.find(x=>x.name===f.name&&x.size===f.size))u.files.push(f); });
+      sync(key); render(key);
+    });
+  });
+
+  function showErr(id){document.getElementById('e-'+id)?.classList.add('show');document.getElementById(id)?.classList.add('err');}
+  function clearErr(id){document.getElementById('e-'+id)?.classList.remove('show');document.getElementById(id)?.classList.remove('err');}
+  ['fullName','email'].forEach(id=>document.getElementById(id).addEventListener('input',()=>clearErr(id)));
+
+  document.getElementById('caseForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    let ok=true;
+    const name=document.getElementById('fullName').value.trim();
+    const email=document.getElementById('email').value.trim();
+    if(!name){showErr('fullName');ok=false;}else clearErr('fullName');
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr('email');ok=false;}else clearErr('email');
+    if(uploads.lease.files.length===0){document.getElementById('req-lease').classList.add('show');ok=false;}
+    if(!ok){document.querySelector('.field-err.show,.upload-req-note.show')?.scrollIntoView({behavior:'smooth',block:'center'});return;}
+
+    const btn=document.getElementById('submitBtn');
+    btn.disabled=true; btn.innerHTML='<span>Uploading…</span>';
+
+    const fd=new FormData(this);
+    uploads.lease.files.forEach(f=>fd.append('lease',f));
+    uploads.photos.files.forEach(f=>fd.append('photos',f));
+    uploads.correspondence.files.forEach(f=>fd.append('correspondence',f));
+
+    try {
+      const res=await fetch('/',{method:'POST',body:fd});
+      if(res.ok||res.redirected){
+        document.getElementById('caseForm').classList.add('hidden');
+        document.getElementById('successBox').classList.add('show');
+        window.scrollTo({top:0,behavior:'smooth'});
+      } else throw new Error();
+    } catch {
+      btn.disabled=false;
+      btn.innerHTML='<span>Submit My Documents</span><span>→</span>';
+      alert('Something went wrong. Please email files to MySmartCousin@gmail.com');
+    }
+  });
+</script>
+
 </body>
 </html>
