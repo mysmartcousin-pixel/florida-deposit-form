@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Florida Security Deposit Recovery</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f5f5;padding:20px;line-height:1.6}
+.container{max-width:500px;margin:0 auto;background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+.header{background:#1e3a5f;color:white;padding:30px 20px;text-align:center}
+.header h1{font-size:22px;margin-bottom:8px}
+.header p{font-size:14px;opacity:0.9}
+.form{padding:25px 20px}
+.field{margin-bottom:20px}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:15px;color:#333}
+.required label::after{content:" *";color:#e74c3c}
+input,textarea,select{width:100%;padding:14px;border:2px solid #e0e0e0;border-radius:10px;font-size:16px}
+input:focus,textarea:focus{outline:none;border-color:#1e3a5f}
+textarea{min-height:80px}
+.radio-group{display:flex;gap:15px;flex-wrap:wrap}
+.radio-group label{font-weight:normal;display:flex;align-items:center;gap:6px}
+.radio-group input{width:20px;height:20px}
+input[type="file"]{padding:10px;border:2px dashed #ccc;background:#fafafa}
+.submit-btn{width:100%;padding:16px;background:#1e3a5f;color:white;border:none;border-radius:10px;font-size:17px;font-weight:600}
+.success{display:none;text-align:center;padding:40px 20px}
+.success h2{color:#1e3a5f;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>Florida Security Deposit Recovery</h1>
+<p>Complete this form after payment. Letter delivered within 24 hours.</p>
+</div>
+<form class="form" id="depositForm" action="https://formspree.io/f/mqewywkg"
+<div class="field required"><label>Full name</label><input type="text" name="fullName" required></div>
+<div class="field required"><label>Email</label><input type="email" name="email" required></div>
+<div class="field"><label>Phone (optional)</label><input type="tel" name="phone"></div>
+<div class="field required"><label>Landlord/property company</label><input type="text" name="landlord" required></div>
+<div class="field required"><label>Property address</label><textarea name="address" required></textarea></div>
+<div class="field required"><label>Move-out date</label><input type="date" name="moveOut" required></div>
+<div class="field required"><label>Deposit amount paid</label><input type="number" name="depositPaid" required></div>
+<div class="field"><label>Amount returned (if any)</label><input type="number" name="depositReturned"></div>
+<div class="field"><label>Deductions claimed</label><textarea name="deductions"></textarea></div>
+<div class="field required"><label>Itemized list within 30 days?</label><div class="radio-group"><label><input type="radio" name="itemized" value="Yes" required> Yes</label><label><input type="radio" name="itemized" value="No"> No</label><label><input type="radio" name="itemized" value="DontKnow"> Don't know</label></div></div>
+<div class="field required"><label>Upload lease agreement</label><input type="file" name="lease" accept=".pdf,.jpg,.jpeg,.png" required></div>
+<div class="field"><label>Upload move-out photos</label><input type="file" name="photos" accept="image/*" multiple></div>
+<div class="field"><label>Upload deposit statement</label><input type="file" name="statement" accept=".pdf,.jpg,.jpeg,.png"></div>
+<div class="field"><label>Additional details</label><textarea name="notes"></textarea></div>
+<button type="submit" class="submit-btn">Submit My Case</button>
+</form>
+<div class="success" id="success"><h2>Case Submitted!</h2><p>Check your email within 24 hours for your demand letter.</p></div>
+</div>
+<script>
+document.getElementById('depositForm').addEventListener('submit',function(e){
+document.getElementById('depositForm').style.display='none';
+document.getElementById('success').style.display='block';
+});
+</script>
+</body>
+</html>
