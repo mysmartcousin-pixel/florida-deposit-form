@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Smart Cousin — Documents Received!</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #4EC4C4; --teal-dark: #3AADAD; --teal-deep: #2A9090;
+    --teal-light: #E8F8F8; --navy: #1E2D40; --navy2: #263547;
+    --white: #FFFFFF; --off-white: #F7FAFA; --border: #C8E8E8;
+    --muted: #6B8080;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--off-white); color: var(--navy); min-height: 100vh; display: flex; flex-direction: column; }
+
+.header { background: var(–teal); position: relative; overflow: hidden; }
+.header::after { content:’’; position:absolute; bottom:-1px; left:0; right:0; height:28px; background:var(–off-white); border-radius:28px 28px 0 0; }
+.header-inner { position:relative; z-index:1; padding:20px 20px 44px; text-align:center; }
+.nav-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.logo-wrap { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.22); border:1.5px solid rgba(255,255,255,0.40); border-radius:10px; padding:8px 14px; }
+.logo-text { font-weight:700; font-size:13px; letter-spacing:0.10em; text-transform:uppercase; color:var(–white); }
+
+.body { max-width:520px; margin:0 auto; padding:0 16px 60px; flex:1; }
+
+.success-card { background:var(–white); border:1.5px solid var(–border); border-radius:20px; padding:36px 24px; text-align:center; box-shadow:0 2px 20px rgba(78,196,196,0.10); margin-bottom:16px; }
+.owl { font-size:60px; margin-bottom:16px; display:block; animation: bounce-in 0.6s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes bounce-in { from{transform:scale(0)} to{transform:scale(1)} }
+h1 { font-family:‘Lora’,serif; font-size:28px; color:var(–navy); margin-bottom:10px; }
+.sub { color:var(–muted); font-size:14px; line-height:1.7; margin-bottom:28px; }
+
+.steps-card { background:var(–teal-light); border:1.5px solid var(–border); border-radius:14px; padding:20px; text-align:left; margin-bottom:24px; }
+.steps-title { font-family:‘Lora’,serif; font-size:15px; color:var(–navy); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.step { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px solid rgba(78,196,196,0.20); font-size:13.5px; line-height:1.5; color:var(–navy2); }
+.step:last-child { border-bottom:none; padding-bottom:0; }
+.step-num { width:26px; height:26px; background:var(–teal); color:var(–white); border-radius:50%; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+
+.back-btn { display:inline-block; background:var(–navy); color:var(–white); font-family:‘Nunito’,sans-serif; font-size:15px; font-weight:700; padding:14px 32px; border-radius:12px; text-decoration:none; transition:all 0.2s; }
+.back-btn:hover { background:var(–navy2); box-shadow:0 4px 16px rgba(30,45,64,0.20); transform:translateY(-1px); }
+
+footer { text-align:center; padding:20px 16px; font-size:12px; color:var(–muted); }
+footer a { color:var(–teal-deep); text-decoration:none; }
+</style>
+
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="nav-row">
+      <div class="logo-wrap">
+        <span style="font-size:20px">🦉</span>
+        <span class="logo-text">My Smart Cousin</span>
+      </div>
+      <div style="background:var(--navy);color:var(--white);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px;">Florida §83.49</div>
+    </div>
+  </div>
+</header>
+
+<div class="body">
+  <div class="success-card">
+    <span class="owl">🦉</span>
+    <h1>Your Cousin's On It!</h1>
+    <p class="sub">Documents received. Check your inbox within <strong>24 hours</strong> for your demand letter — ready to send straight to your landlord.</p>
+
+```
+<div class="steps-card">
+  <div class="steps-title">⚖️ What Happens Next</div>
+  <div class="step"><div class="step-num">1</div><div>We draft your demand letter citing <strong>F.S. §83.49</strong> and email it to you.</div></div>
+  <div class="step"><div class="step-num">2</div><div>You send it to your landlord by email or <strong>certified mail</strong>.</div></div>
+  <div class="step"><div class="step-num">3</div><div>Your landlord has <strong>30 days</strong> to respond under Florida law.</div></div>
+  <div class="step"><div class="step-num">4</div><div>No response? File in small claims court — you may be owed <strong>double your deposit</strong>.</div></div>
+</div>
+
+<a href="https://mysmartcousin.com" class="back-btn">← Back to mysmartcousin.com</a>
+```
+
+  </div>
+</div>
+
+<footer>
+  © 2025 My Smart Cousin &nbsp;·&nbsp; <a href="https://mysmartcousin.com">mysmartcousin.com</a><br>
+  This service prepares demand letters based on Florida Statute §83.49. Not a law firm.
+</footer>
+
+</body>
+</html>
